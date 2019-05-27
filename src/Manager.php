@@ -1,44 +1,19 @@
 <?php
-namespace Aloha\Twilio;
+namespace Stackout\Twilio;
 
 use InvalidArgumentException;
+use App\Models\Settings;
 
 class Manager implements TwilioInterface
 {
     /**
-     * @var string
-     */
-    protected $default;
-
-    /**
-     * @var array
-     */
-    protected $settings;
-
-    /**
-     * @param string $default
-     * @param array $settings
-     */
-    public function __construct($default, array $settings)
-    {
-        $this->default = $default;
-        $this->settings = $settings;
-    }
-
-    /**
      * @param string $connection
      *
-     * @return \Aloha\Twilio\TwilioInterface
+     * @return \Stackout\Twilio\TwilioInterface
      */
-    public function from($connection)
+    public function from()
     {
-        if (!isset($this->settings[$connection])) {
-            throw new InvalidArgumentException("Connection \"$connection\" is not configured.");
-        }
-
-        $settings = $this->settings[$connection];
-
-        return new Twilio($settings['sid'], $settings['token'], $settings['from']);
+        return new Twilio(Setting::get('twilio_sid'), Setting::get('twilio_auth_token'), Setting::get('twilio_phone_number'));
     }
 
     /**
@@ -64,7 +39,7 @@ class Manager implements TwilioInterface
     }
 
     /**
-     * @return \Aloha\Twilio\TwilioInterface
+     * @return \Stackout\Twilio\TwilioInterface
      */
     public function defaultConnection()
     {
