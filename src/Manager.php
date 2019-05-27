@@ -2,7 +2,7 @@
 namespace Stackout\Twilio;
 
 use InvalidArgumentException;
-use App\Models\Settings;
+use App\Models\Setting;
 
 class Manager implements TwilioInterface
 {
