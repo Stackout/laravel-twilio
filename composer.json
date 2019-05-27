@@ -1,5 +1,5 @@
 {
-    "name": "aloha/twilio",
+    "name": "stackout/twilio",
     "description": "Twilio API for Laravel",
     "type": "library",
     "keywords": ["sms","ivr","laravel","twilio"],
@@ -11,9 +11,13 @@
         {
             "name": "Hannes Van De Vreken",
             "email": "vandevreken.hannes@gmail.com"
+        },
+        {
+            "name": "Ryan Hein",
+            "email": "me@ryanhein.com"
         }
     ],
-    "homepage":"https://github.com/aloha/laravel-twilio",
+    "homepage":"https://github.com/stackout/laravel-twilio",
     "license": "MIT",
     "require": {
         "php": ">=5.5.0",
@@ -27,12 +31,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Aloha\\Twilio\\": "src/"
+            "Stackout\\Twilio\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Aloha\\Twilio\\Tests\\": "tests/"
+            "Stackout\\Twilio\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -43,10 +47,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Aloha\\Twilio\\Support\\Laravel\\ServiceProvider"
+                "Stackout\\Twilio\\Support\\Laravel\\ServiceProvider"
             ],
             "aliases": {
-                "Twilio": "Aloha\\Twilio\\Support\\Laravel\\Facade"
+                "Twilio": "Stackout\\Twilio\\Support\\Laravel\\Facade"
             }
         }
     }

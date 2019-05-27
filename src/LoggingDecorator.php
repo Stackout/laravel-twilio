@@ -1,5 +1,5 @@
 <?php
-namespace Aloha\Twilio;
+namespace Stackout\Twilio;
 
 use Psr\Log\LoggerInterface;
 
@@ -11,13 +11,13 @@ class LoggingDecorator implements TwilioInterface
     private $logger;
 
     /**
-     * @var \Aloha\Twilio\TwilioInterface
+     * @var \Stackout\Twilio\TwilioInterface
      */
     private $wrapped;
 
     /**
      * @param \Psr\Log\LoggerInterface $logger
-     * @param \Aloha\Twilio\TwilioInterface $wrapped
+     * @param \Stackout\Twilio\TwilioInterface $wrapped
      */
     public function __construct(LoggerInterface $logger, TwilioInterface $wrapped)
     {

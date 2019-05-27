@@ -26,7 +26,7 @@ To wire this up in your Laravel project, you need to add the service provider.
 Open `app.php`, and add a new item to the providers array.
 
 ```php
-'Aloha\Twilio\Support\Laravel\ServiceProvider',
+'Stackout\Twilio\Support\Laravel\ServiceProvider',
 ```
 
 This will register two new artisan commands for you:
@@ -36,14 +36,14 @@ This will register two new artisan commands for you:
 
 And make these objects resolvable from the IoC container:
 
-- `Aloha\Twilio\Manager` (aliased as `twilio`)
-- `Aloha\Twilio\TwilioInterface` (resolves a `Twilio` object, the default connection object created by the `Manager`).
+- `Stackout\Twilio\Manager` (aliased as `twilio`)
+- `Stackout\Twilio\TwilioInterface` (resolves a `Twilio` object, the default connection object created by the `Manager`).
 
 There's a Facade class available for you, if you like. In your `app.php` config file add the following
 line to the `aliases` array if you want to use a short class name:
 
 ```php
-'Twilio' => 'Aloha\Twilio\Support\Laravel\Facade',
+'Twilio' => 'Stackout\Twilio\Support\Laravel\Facade',
 ```
 
 In Laravel 4 you can publish the default config file to `app/config/packages/aloha/twilio/config.php` with the artisan command `config:publish aloha/twilio`.
@@ -51,13 +51,13 @@ In Laravel 4 you can publish the default config file to `app/config/packages/alo
 In Laravel 5 you can publish the default config file to `config/twilio.php` with the artisan command `vendor:publish --tag=config`.
 Or to ensure you publish only this package's tag use
 ```shell
-php artisan vendor:publish --tag=config --provider=Aloha\Twilio\Support\Laravel\ServiceProvider
+php artisan vendor:publish --tag=config --provider=Stackout\Twilio\Support\Laravel\ServiceProvider
 ```
 
 
 #### Facade
 
-The facade has the exact same methods as the `Aloha\Twilio\TwilioInterface`. First, include the `Facade` class at the top of your file:
+The facade has the exact same methods as the `Stackout\Twilio\TwilioInterface`. First, include the `Facade` class at the top of your file:
 
 ```php
 use Twilio;
@@ -80,10 +80,10 @@ Define multiple entries in your `twilio` [config file](src/config/config.php) to
 
 ### Usage
 
-Creating a Twilio object. This object implements the `Aloha\Twilio\TwilioInterface`.
+Creating a Twilio object. This object implements the `Stackout\Twilio\TwilioInterface`.
 
 ```php
-$twilio = new Aloha\Twilio\Twilio($accountId, $token, $fromNumber);
+$twilio = new Stackout\Twilio\Twilio($accountId, $token, $fromNumber);
 ```
 
 Sending a text message:
@@ -138,12 +138,12 @@ $twilio->call($to, $message, $params);
 
 #### Dummy class
 
-There is a dummy implementation of the `TwilioInterface` available: `Aloha\Twilio\Dummy`. This class
+There is a dummy implementation of the `TwilioInterface` available: `Stackout\Twilio\Dummy`. This class
 allows you to inject this instead of a working implementation in case you need to run quick integration tests.
 
 #### Logging decorator
 
-There is one more class available for you: the `Aloha\Twilio\LoggingDecorator`. This class wraps any
+There is one more class available for you: the `Stackout\Twilio\LoggingDecorator`. This class wraps any
 `TwilioInterface` object and logs whatever Twilio will do for you. It also takes a `Psr\Log\LoggerInterface` object
 (like Monolog) for logging, you know.
 
@@ -153,10 +153,10 @@ but it is at your disposal in case you want it. A possible use case is to constr
 
 ```php
 if (getenv('APP_ENV') === 'production') {
-    $twilio = $container->make(\Aloha\Twilio\Manager::class);
+    $twilio = $container->make(\Stackout\Twilio\Manager::class);
 } else {
     $psrLogger = $container->make(\Psr\Log\LoggerInterface::class);
-    $twilio = new LoggingDecorator($psrLogger, new \Aloha\Twilio\Dummy());
+    $twilio = new LoggingDecorator($psrLogger, new \Stackout\Twilio\Dummy());
 }
 
 // Inject it wherever you want.

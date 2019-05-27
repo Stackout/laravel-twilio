@@ -1,10 +1,10 @@
 <?php
-namespace Aloha\Twilio\Support\Laravel;
+namespace Stackout\Twilio\Support\Laravel;
 
-use Aloha\Twilio\Commands\TwilioCallCommand;
-use Aloha\Twilio\Commands\TwilioSmsCommand;
-use Aloha\Twilio\Manager;
-use Aloha\Twilio\TwilioInterface;
+use Stackout\Twilio\Commands\TwilioCallCommand;
+use Stackout\Twilio\Commands\TwilioSmsCommand;
+use Stackout\Twilio\Manager;
+use Stackout\Twilio\TwilioInterface;
 
 trait ServiceProviderTrait
 {
@@ -15,9 +15,7 @@ trait ServiceProviderTrait
     {
         // Register manager for usage with the Facade.
         $this->app->singleton('twilio', function () {
-            $config = $this->config();
-
-            return new Manager($config['default'], $config['connections']);
+            return new Manager();
         });
 
         // Define an alias.

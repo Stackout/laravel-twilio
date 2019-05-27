@@ -1,5 +1,5 @@
 <?php
-namespace Aloha\Twilio\Support\Laravel;
+namespace Stackout\Twilio\Support\Laravel;
 
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 
@@ -14,11 +14,7 @@ class L4ServiceProvider extends LaravelServiceProvider
     {
         // Register commands.
         $this->commands('twilio.sms', 'twilio.call');
-        $this->package('aloha/twilio');
+        $this->package('stackout/twilio');
     }
 
-    protected function config()
-    {
-        return $this->app['config']->get('twilio::twilio');
-    }
 }

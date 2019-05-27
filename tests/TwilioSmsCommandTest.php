@@ -1,7 +1,7 @@
 <?php
-namespace Aloha\Twilio\Tests;
+namespace Stackout\Twilio\Tests;
 
-use Aloha\Twilio\Commands\TwilioSmsCommand;
+use Stackout\Twilio\Commands\TwilioSmsCommand;
 use PHPUnit_Framework_TestCase;
 
 class TwilioSmsCommandTest extends PHPUnit_Framework_TestCase
@@ -12,7 +12,7 @@ class TwilioSmsCommandTest extends PHPUnit_Framework_TestCase
     public function testName()
     {
         // Arrange
-        $stub = $this->getMock('Aloha\Twilio\TwilioInterface');
+        $stub = $this->getMock('Stackout\Twilio\TwilioInterface');
         $command = new TwilioSmsCommand($stub);
 
         // Act
